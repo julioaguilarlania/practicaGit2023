@@ -42,6 +42,7 @@ public class ServicioExpedientes {
     public List<Expediente> getPorAtender() {
         LocalDate fecha = LocalDate.now().minus(2, ChronoUnit.WEEKS);
         Long expedientesMarcados = repoExpedientes.marcarExpedientesPorAtender(fecha);
+        LOGGER.trace("{} expedientes marcados", expedientesMarcados);
         return repoExpedientes.findByEstatus(EstatusExpediente.PRIORIDAD_ATENCION);
     }
 
